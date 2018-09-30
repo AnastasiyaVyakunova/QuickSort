@@ -1,5 +1,7 @@
 #include<cstdio>
 #include<vector>
+#include <algorithm> 
+#include <cstdlib>
 
 using namespace std;
 //template<typename T>
@@ -31,13 +33,18 @@ vector<int> quickSort(vector<int> a)
 			l.push_back(max);
 			l.insert(l.end(), h.begin(), h.end());
 			return l;
-		}
+}
 
+int comp(const void* a, const void* b)
+{
+	return (*(int*)a - *(int*)b);
+}
 
 int main()
 {
 	vector<int> arr;
 	vector<int> arr1;
+	vector<int> arr2;
 
 	int n;
 	printf("Enter n: \n");
@@ -57,6 +64,22 @@ int main()
 	{
 		printf("%d", arr1[i]);
 	}
+	printf("\n");
+
+	arr2 = arr;
+	sort(arr2.begin(),arr2.end());
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d", arr2[i]);
+	}
+	printf("\n");
+
+	qsort(&arr[0], n, sizeof(int), comp);
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d", arr[i]);
+	}
+	printf("\n");
 
 
 	system("pause");
